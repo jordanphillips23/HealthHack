@@ -54,7 +54,7 @@ ROOT_URLCONF = 'HealthHack.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['HealthHack/templates/'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
