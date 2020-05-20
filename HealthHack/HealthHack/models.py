@@ -11,11 +11,12 @@ class company(models.Model):
 
 class dailyAverage(models.Model):
     companyID = models.ForeignKey('Company', on_delete=models.CASCADE)
-    hour = models.TimeField()
+    time = models.TimeField()
     population = models.IntegerField()
+    count = models.IntegerField()
 
 class log(models.Model):
     companyId = models.ForeignKey('Company', on_delete=models.CASCADE)
-    hour = models.TimeField(auto_now_add = True)
+    time = models.TimeField(auto_now_add = True)
     population = models.IntegerField()
     date = models.DateField()
