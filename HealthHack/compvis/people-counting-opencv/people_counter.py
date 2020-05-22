@@ -9,6 +9,7 @@
 #	--model mobilenet_ssd/MobileNetSSD_deploy.caffemodel \
 #	--output output/webcam_output.avi
 
+
 # import the necessary packages
 from pyimagesearch.centroidtracker import CentroidTracker
 from pyimagesearch.trackableobject import TrackableObject
@@ -20,21 +21,18 @@ import imutils
 import time
 import dlib
 import cv2
+from datetime import datetime
+import requests
+import pytz
 
 # construct the argument parse and parse the arguments
+CAFFE_DEP_FILEP = "/mobilenet_ssd/MobileNetSSD_deploy.prototxt"
+CAFFE_MOD_FILEP = "/mobilenet_ssd/MobileNetSSD_deploy.caffemodel"
+CONF_T = 0.4 #confidence threshold
+SKIP_F = 30 #number of skipped frames
 ap = argparse.ArgumentParser()
-ap.add_argument("-p", "--prototxt", required=True,
-	help="path to Caffe 'deploy' prototxt file")
-ap.add_argument("-m", "--model", required=True,
-	help="path to Caffe pre-trained model")
 ap.add_argument("-i", "--input", type=str,
 	help="path to optional input video file")
-ap.add_argument("-o", "--output", type=str,
-	help="path to optional output video file")
-ap.add_argument("-c", "--confidence", type=float, default=0.4,
-	help="minimum probability to filter weak detections")
-ap.add_argument("-s", "--skip-frames", type=int, default=30,
-	help="# of skip frames between detections")
 args = vars(ap.parse_args())
 
 # initialize the list of class labels MobileNet SSD was trained to
@@ -45,8 +43,8 @@ CLASSES = ["background", "aeroplane", "bicycle", "bird", "boat",
 	"sofa", "train", "tvmonitor"]
 
 # load our serialized model from disk
-print("[INFO] loading model...")
-net = cv2.dnn.readNetFromCaffe(args["prototxt"], args["model"])
+#print("[INFO] loading model...")
+net = cv2.dnn.readNetFromCaffe(CAFFE_DEP_FILEP, CAFFE_MOD_FILEP)
 
 # if a video path was not supplied, grab a reference to the webcam
 if not args.get("input", False):
@@ -58,9 +56,6 @@ if not args.get("input", False):
 else:
 	print("[INFO] opening video file...")
 	vs = cv2.VideoCapture(args["input"])
-
-# initialize the video writer (we'll instantiate later if need be)
-writer = None
 
 # initialize the frame dimensions (we'll set them as soon as we read
 # the first frame from the video)
@@ -83,12 +78,24 @@ totalUp = 0
 # start the frames per second throughput estimator
 fps = FPS().start()
 
+URL_PATH = "WEBSITE/api/change"
+API_KEY = "FILL THIS IN"
+
+
 # loop over frames from the video stream
 while True:
+    
+    #Recording previous population
+    prev_pop = totalDown - totalUp
+    
 	# grab the next frame and handle if we are reading from either
 	# VideoCapture or VideoStream
-	frame = vs.read()
+    frame = vs.read()
 	frame = frame[1] if args.get("input", False) else frame
+
+    #Recording current date and time corresponding to frame
+    curtime = pytz.utc.localize(datetime.utcnow().time())
+    curdate = pytz.utc.localize(datetime.utcnow().date())
 
 	# if we are viewing a video and we did not grab a frame then we
 	# have reached the end of the video
@@ -105,13 +112,6 @@ while True:
 	if W is None or H is None:
 		(H, W) = frame.shape[:2]
 
-	# if we are supposed to be writing a video to disk, initialize
-	# the writer
-	if args["output"] is not None and writer is None:
-		fourcc = cv2.VideoWriter_fourcc(*"MJPG")
-		writer = cv2.VideoWriter(args["output"], fourcc, 30,
-			(W, H), True)
-
 	# initialize the current status along with our list of bounding
 	# box rectangles returned by either (1) our object detector or
 	# (2) the correlation trackers
@@ -120,7 +120,7 @@ while True:
 
 	# check to see if we should run a more computationally expensive
 	# object detection method to aid our tracker
-	if totalFrames % args["skip_frames"] == 0:
+	if totalFrames % SKIP_F == 0:
 		# set the status and initialize our new set of object trackers
 		status = "Detecting"
 		trackers = []
@@ -139,7 +139,7 @@ while True:
 
 			# filter out weak detections by requiring a minimum
 			# confidence
-			if confidence > args["confidence"]:
+			if confidence > CONF_T:
 				# extract the index of the class label from the
 				# detections list
 				idx = int(detections[0, 0, i, 1])
@@ -234,39 +234,17 @@ while True:
 
 		# store the trackable object in our dictionary
 		trackableObjects[objectID] = to
-
-		# draw both the ID of the object and the centroid of the
-		# object on the output frame
-		text = "ID {}".format(objectID)
-		cv2.putText(frame, text, (centroid[0] - 10, centroid[1] - 10),
-			cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2)
-		cv2.circle(frame, (centroid[0], centroid[1]), 4, (0, 255, 0), -1)
-
-	# construct a tuple of information we will be displaying on the
-	# frame
-	info = [
-		("Up", totalUp),
-		("Down", totalDown),
-		("Status", status),
-	]
-
-	# loop over the info tuples and draw them on our frame
-	for (i, (k, v)) in enumerate(info):
-		text = "{}: {}".format(k, v)
-		cv2.putText(frame, text, (10, H - ((i * 20) + 20)),
-			cv2.FONT_HERSHEY_SIMPLEX, 0.6, (0, 0, 255), 2)
-
-	# check to see if we should write the frame to disk
-	if writer is not None:
-		writer.write(frame)
-
-	# show the output frame
-	cv2.imshow("Frame", frame)
-	key = cv2.waitKey(1) & 0xFF
-
-	# if the `q` key was pressed, break from the loop
-	if key == ord("q"):
-		break
+    
+    cur_pop = totalDown - totalUp
+    
+    to_send = {
+            "key": API_KEY
+            "time": curtime,
+            "population": cur_pop,
+            "date": curdate
+    }
+    
+    r = requests.post(URL_PATH, data = to_send)
 
 	# increment the total number of frames processed thus far and
 	# then update the FPS counter
@@ -278,9 +256,6 @@ fps.stop()
 print("[INFO] elapsed time: {:.2f}".format(fps.elapsed()))
 print("[INFO] approx. FPS: {:.2f}".format(fps.fps()))
 
-# check to see if we need to release the video writer pointer
-if writer is not None:
-	writer.release()
 
 # if we are not using a video file, stop the camera video stream
 if not args.get("input", False):
