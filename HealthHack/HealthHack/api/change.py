@@ -12,6 +12,6 @@ def change(request):
             log.objects.create(companyID = currentCompany.id, population = request['population'],
             date = request['data'], time = request['time'])
         else:
-            return HttpResponse(status=400)
+            return HttpResponse(status = 401)
     else:
-	    return HttpResponse(status=404)
+	    return HttpResponse(status = 404)
