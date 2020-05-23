@@ -11,11 +11,15 @@
         {% include "components/loadCSS.html" %}
     {% endblock %}
 
+    {% block header %}
+        {% include "components/header.html" %}
+    {% endblock %}
+
 </head>
 
 <body>
     {% block navbar %}
-        {% include "components/navbar.html" %} 
+        {% include "components/navbar.html" %}
     {% endblock %}
     <div id="content">
         {% block content %}{% endblock %}
