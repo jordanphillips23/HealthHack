@@ -14,7 +14,10 @@ def camelCase(str):
 
 def pageNames():
 	out = []
+	out.append("Home")
 	# gets the name of all the html pages except the home page
-	for name in listdir("HealthHack/templates/pages"):
-	       out.append(camelCase(name.split(".")[0]))
+	for name in listdir("HealthHack/templates/pages/std"):
+		if name == "home.html":
+			continue
+		out.append(camelCase(name.split(".")[0]))
 	return out

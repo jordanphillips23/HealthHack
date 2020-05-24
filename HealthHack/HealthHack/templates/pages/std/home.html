@@ -1,45 +1,12 @@
 {% extends "base.html" %}
 
-{% block header %}
-<link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/starter-template/">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-<!-- Bootstrap core CSS -->
-<link href="static/css/bootstrap.css" rel="stylesheet">
-
-<!-- Custom styles for this template -->
-<link href="static/css/starter-template.css" rel="stylesheet">
-
-<!-- Search Bar styling -->
-<link href="static/css/search.css" rel="stylesheet" />
-<link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500" rel="stylesheet" />
-
-
-<style>
-  .bd-placeholder-img {
-  font-size: 1.125rem;
-    text-anchor: middle;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-  }
-
-    @media (min-width: 768px) {
-      .bd-placeholder-img-lg {
-      font-size: 3.5rem;
-      }
-    }
-</style>
-
-{% endblock %}
-
 {% block content %}
+
+
 <main role="main" class="container">
 
   <div class="starter-template">
-      <h1 style="font-size: 5rem"><b>[Insert Title Here]</b></h1>
+      <h1 style="font-size: 5rem"><b>CrowdCount</b></h1>
       <p class="lead">Find out how safe/busy a particular location is right now.</p>
 
       <p class="lead">Type below to begin:</p>
@@ -50,7 +17,7 @@
   <form>
       <div class="inner-form">
         <!--Leftmost Search Box: -->
-          <div class="input-field first-wrap">
+          <div class="input-field first-wrap"">
             <div class="icon-wrap">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                 <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"></path>
@@ -68,7 +35,7 @@
             </div>
 
             <!--Dropdown menu options: -->
-            <select data-trigger="" name="choices-single-defaul">
+            <select data-trigger="" name="choices-single-defaul" id = "type">
                 <option placeholder="">Type</option>
                 <option>Dining</option>
                 <option>Library</option>
@@ -77,7 +44,7 @@
           </div>
 
           <!--The actual search button: -->
-          <div class="input-field fifth-wrap">
+          <div class="input-field fifth-wrap" onclick = "submit()">
             <button class="btn-search" type="button">SEARCH</button>
           </div>
 
@@ -100,6 +67,11 @@
       searchEnabled: false,
       itemSelectText: '',
     });
+</script>
+<script>
+submit = function() {
+  window.location.href = "/searchList?type=" + $("#type").val() + "&zip=" + $("#search").val()
+}
 </script>
 
 </main><!-- /.container -->

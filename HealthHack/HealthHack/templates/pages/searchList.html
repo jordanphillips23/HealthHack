@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<style>
+    #customers {
+      font-family: courier;
+      border-collapse: collapse;
+      width: 90%;
+    }
+
+    #customers td, #customers th {
+      border: 3px solid black;
+      padding: 10px;
+    }
+
+    /*Change the styling of even and odd columns here*/
+    #customers tr:nth-child(even){background-color: #d8dceb;}
+    #customers tr:nth-child(odd){background-color: #d8dceb;}
+
+    /* You can have the rows change color when you hover:;
+    #customers tr:hover {background-color: grey;}*/
+
+    /*Change the styling of the table header here*/
+    #customers th {
+      padding-top: 12px;
+      padding-bottom: 12px;
+      text-align: left;
+      background-color: #425fd4;
+      color: white;
+      font-size: 1.5rem;
+    }
+</style>
+
+<div class="container">
+    <br>
+    <center>
+    <h1><b>Search Results</b></h1>
+    </center>
+</div>
+
+<!--=====================Code for Table begins here========================-->
+<center>
+    <table id="customers">
+      <tr>
+          <th>Name</th>
+          <th>Address</th>
+        </tr>
+        {% for company in results %}
+        <tr>
+          <td><a href="/company?company={{ company.id }}">{{ company.name }}</a></td>
+          <td>{{ company.address }}, {{ company.zip }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+ </center>
+
+{% endblock %}
