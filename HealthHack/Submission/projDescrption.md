@@ -8,22 +8,22 @@
 *This is the project description that we will copy/paste into DevPost*
 -->
 
-## 1. Inspiration  
+### 1. Inspiration  
 
 
-## 2. What it does  
+### 2. What it does  
 
 
-## 3. How we built it  
+### 3. How we built it  
 
 
-## 4. Challenges we ran into  
+### 4. Challenges we ran into  
 
 
-## 5. Accomplishments we're proud of  
+### 5. Accomplishments we're proud of  
 
 
-## 6. What we've learned  
+### 6. What we've learned  
 
 
-## 7. What's next for our Sample Submission  
+### 7. What's next for this project  
