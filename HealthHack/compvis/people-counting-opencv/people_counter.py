@@ -285,14 +285,15 @@ while True:
     
     cur_pop = totalDown - totalUp
     
-    to_send = {
-            "key": API_KEY
-            "time": curtime,
-            "population": cur_pop,
-            "date": curdate
-    }
+
+    #to_send = {
+    #        "key": API_KEY
+    #        "time": curtime,
+    #        "population": cur_pop,
+    #        "date": curdate
+    #}
     
-    r = requests.post(URL_PATH, data = to_send) 
+    # r = requests.post(URL_PATH, data = to_send) 
 
     # increment the total number of frames processed thus far and
     # then update the FPS counter
