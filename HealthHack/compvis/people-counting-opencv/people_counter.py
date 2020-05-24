@@ -281,7 +281,7 @@ while True:
     if key == ord("q"):
         break
         
-    '''
+    
     
     cur_pop = totalDown - totalUp
     
@@ -292,7 +292,7 @@ while True:
             "date": curdate
     }
     
-    r = requests.post(URL_PATH, data = to_send) '''
+    r = requests.post(URL_PATH, data = to_send) 
 
     # increment the total number of frames processed thus far and
     # then update the FPS counter
