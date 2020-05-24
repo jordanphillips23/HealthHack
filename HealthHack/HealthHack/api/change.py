@@ -5,12 +5,12 @@ import django
 
 def change(request):
     if request.method == "POST":
-        if company.objects.count(apiKey = request['key']) == 1:
-            currentCompany = company.objects.get(apiKey = request['key'])
+        if company.objects.count(key = request['key']) == 1:
+            currentCompany = company.objects.get(key = request['key'])
             currentCompany.currentPopulation = int(request['population'])
             currentCompany.save()
-            log.objects.create(companyID = currentCompany.id, population = request['population'],
-            date = request['data'], time = request['time'])
+            log.objects.create(companyID = currentCompany, population = request['population'],
+            date = request['date'], time = request['time'])
         else:
             return HttpResponse(status = 401)
     else:

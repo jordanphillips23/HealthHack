@@ -9,6 +9,7 @@ class company(models.Model):
     zip = models.CharField(max_length=5)
     currentPopulation = models.IntegerField()
     type = models.CharField(max_length=30)
+    key = models.CharField(max_length=20)
 
 class dailyAverage(models.Model):
     companyID = models.ForeignKey('Company', on_delete=models.CASCADE)
