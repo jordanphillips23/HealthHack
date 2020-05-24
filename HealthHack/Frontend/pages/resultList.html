@@ -1,0 +1,140 @@
+<!--
+[Insert Project Title Here]
+2020 Stevens Health Hackathon
+May 2020
+
+Authors:
+- Jordan P (jmp2291@columbia.edu)
+- Shomik G (sg3789@columbia.edu)
+- Austin T (alt2177@columbia.edu)
+
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+                <!-- Bootstrap core CSS -->
+        <link href="../css/bootstrap.css" rel="stylesheet">
+
+        <style>
+            #customers {
+              font-family: courier;
+              border-collapse: collapse;
+              width: 90%;
+            }
+
+            #customers td, #customers th {
+              border: 3px solid black;
+              padding: 10px;
+            }
+
+            /*Change the styling of even and odd columns here*/
+            #customers tr:nth-child(even){background-color: #d8dceb;}
+            #customers tr:nth-child(odd){background-color: #d8dceb;}
+
+            /* You can have the rows change color when you hover:;
+            #customers tr:hover {background-color: grey;}*/
+
+            /*Change the styling of the table header here*/
+            #customers th {
+              padding-top: 12px;
+              padding-bottom: 12px;
+              text-align: left;
+              background-color: #425fd4;
+              color: white;
+              font-size: 1.5rem;
+            }
+        </style>
+    </head>
+
+
+    <body>
+        <body style="font-family: courier;">
+
+        <!--=================================Navigation Bar================================-->
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+            <a class="navbar-brand" href="#">Navbar</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.html">Home <span class="sr-only">
+                        </span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact<span class="sr-only">
+                        </span></a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <!--These page breaks are so that the results don't interfere with the navbar-->
+        <br>
+        <br>
+        <br>
+
+	    <div class="container">
+	        <br>
+	        <center>
+	        <h1><b>Search Results</b></h1>
+	        </center>
+	    </div> 
+
+	    <!--=====================Code for Table begins here========================-->
+    	<center>
+	        <table id="customers">
+	        	<tr>
+	            	<th>Name</th>
+	            	<th>Address</th>
+	          	</tr>
+	         	<tr>
+		            <td><a href="companyPage.html">[Insert Company Name Here]</a></td>
+		            <td>1522 Crecent Drive</td>
+	          	</tr>
+	          	<tr>
+		            <td>Berglunds snabbköp</td>
+		            <td>1234 Street St.</td>
+	          	</tr>
+	          	<tr>
+		            <td>Centro comercial Moctezuma</td>
+		            <td>6666 The Devil's Lot</td>
+	          	</tr>
+	          	<tr>
+		            <td>Ernst Handel</td>
+		            <td>72473 Pull Up Avenue</td>
+	          	</tr>
+	          	<tr>
+		            <td>Island Trading</td>
+		            <td>Some Street Address</td>
+	          	</tr>
+	          	<tr>
+		            <td>Königlich Essen</td>
+		            <td>624 Monster Avenue</td>
+	          	</tr>
+	          	<tr>
+		            <td>Laughing Bacchus Winecellars</td>
+		            <td>106 Bobwhite circle</td>
+	          	</tr>
+	          	<tr>
+		            <td>Magazzini Alimentari Riuniti</td>
+		            <td>2365 Steve Jobs</td>
+	          	</tr>
+	          	<tr>
+		            <td>North/South</td>
+		            <td>77377 Something</td>
+	          	</tr>
+	         	<tr>
+		            <td>Paris spécialités</td>
+		            <td>732 Thingy</td>
+	          	</tr>
+	        </table>
+   		 </center>
+
+    </body>
+</html>
