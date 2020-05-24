@@ -9,7 +9,9 @@
 -->
 
 ### 1. Inspiration  
+The idea for this project was sparked by a problem our team members noticed in their everyday lives: when going outside for essential actions (e.g. grocery shopping), it was extremely difficult to actually decide what time to go because they had no idea how crowded a location was. Google Maps gave an estimate for restaurants based on past data, but other locations such as public parks and schools didn’t even have an estimate. 
 
+As a direct result of this, our team decided to develop CrowdCount to address these concerns. CrowdCount not only includes data on schools and parks, but it also updates a webpage in real-time rather than relying on past data to extrapolate predictions. The real-time aspect makes this more useful for consumers and business owners alike.
 
 
 ### 2. What it does
@@ -36,7 +38,7 @@ was spent correcting our own mistakes because we were unfamiliar with syntax or 
 search bar that accessed and searched through a database was a big technical hurdle we overcame. 
 
 ### 5. Accomplishments we're proud of  
-
+We’re very proud of the end product that we’ve created and all the learning that took place throughout the development process, but the thing that really stands out to us is how well our team members collaborated despite the big separation between us all. Since our team members were all in different time zones, communication was a difficult task for all of us — we had to be very careful not to accidentally change someone else’s work or to forget to mention a necessary detail. This is easier said than done, but our team managed to avoid any of these problems, and we’re extremely proud of this fact.
 
 ### 6. What we've learned
 Going into this project, we wanted to challenge ourselves to learn to work with new tools we haven't had much exposure
