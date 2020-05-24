@@ -83,9 +83,9 @@ totalUp = 0
 # start the frames per second throughput estimator
 fps = FPS().start()
 
-URL_PATH = "WEBSITE/api/change"
-API_KEY = "FILL THIS IN"
-
+#The URL_PATH can be specified after the website is hosted and the API_KEY is unique to each company and will be filled in at installation
+URL_PATH = "ADD_WEBSITE_HERE"  
+API_KEY = "ADD_API_KEY_HERE"
 
 # loop over frames from the video stream
 while True:
