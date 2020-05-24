@@ -32,6 +32,6 @@ Contains computer vision code allowing for remote cameras to update the data in 
 ## Frontend
 Contains the raw html/css/js that was ported into the Django templates under HealthHack
 ## HealthHack
-Contains the django web application for this Project:
+Contains the django web application for this Project.
 To run this project, make sure that django, and python are installed on your system.
 Then, navigate to the HealthHack folder in your commandline and run python manage.py runserver
