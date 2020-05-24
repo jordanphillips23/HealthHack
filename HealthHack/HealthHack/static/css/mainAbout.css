@@ -5,7 +5,7 @@
 .bgcolor-skyblue {
     background:#eaf0f9;
 }
- 
+
  .image-aboutus-banner {
     background: linear-gradient(rgba(0,0,0,.7), rgba(0,0,0,.7)), url("https://images.pexels.com/photos/556962/pexels-photo-556962.jpeg?w=940&h=650&auto=compress&cs=tinysrgb");
     background-repeat: no-repeat;
@@ -15,7 +15,7 @@
     padding-top: 110px;
     padding-bottom:110px;
  }
- 
+
   .image-aboutus-sm-banner {
     background: linear-gradient(rgba(0,0,0,.7), rgba(0,0,0,.7)), url("https://images.pexels.com/photos/631008/pexels-photo-631008.jpeg?w=940&h=650&auto=compress&cs=tinysrgb");
     background-repeat: no-repeat;
@@ -95,7 +95,7 @@
     font-size:50px;
     border-radius:90px;
     border:10px solid #323232 ;
-    
+
 }
 .feature-box {
     text-align: center;
@@ -105,7 +105,7 @@
     border: 1px solid #e8e8e8;
 }
 .feature-box:hover {
-   
+
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 .feature-box h4 {
@@ -147,7 +147,7 @@
   position: absolute;
   top: 0;
   left: 0;
- 
+
 }
 .carousel-caption {
     margin-bottom:30px;
@@ -168,7 +168,7 @@
 /* Social Icons */
 
 .social-icons{
-    
+
     margin: 0;
     padding: 0;
     font-size : 10px;
@@ -196,7 +196,7 @@
      color: #f39c12;
      transition:all .25s;
  }
- 
+
  /* CTA CSS */
  .cta-padding35 {
     padding: 35px 0 35px;
@@ -218,16 +218,16 @@
     background-color:transparent;
     transition: all .25s ease-in-out;
     margin: 10px 0px 10px 0px;
-    
+
 }
 .site-btn:hover {
     background: #b40028 ;
     border: 1px solid #fff;
     font-weight:700px;
-    
-    
+
+
 }
- 
+
 
 
 @media (max-width: 767px) {
