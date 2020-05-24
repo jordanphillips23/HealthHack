@@ -1,11 +1,11 @@
-# 2020 COVID-19 HealthHack
+# 2020 COVID-19 HealthHack Submission: CrowdCount
 
 ### Authors: 
 - Jordan Phillips -- jmp2291@columbia.edu
 - Shomik Ghose -- sg3789@columbia.edu
 - Austin Tao -- alt2177@columbia.edu
 
-### Project Overview -- CrowdCount:
+### Project Overview:
 **CrowdCount** is a brand-new project created for the COVID Hackathon II hosted by the Stevens 
 Venture Center. This site utilizes state-of-the-art computer vision to track the number of people
 entering and exiting an establishment and updates a database in real-time, allowing business 
