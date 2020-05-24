@@ -8,17 +8,12 @@ import datetime
 
 
 
-# shows the company specific page
-# expecting get request with the company
+
 def company(request):
     if request.method == "GET":
         context = loadData()
-        # checks to see if an id has been passed in
         if "company" in request.GET:
-            # get the current company and store it in the context
             context["company"] = companyDB.objects.get(id = int(request.GET["company"]))
-
-            # get the data in the correct order
             filteredData = dailyAverage.objects.filter(companyID = context["company"])
             hourMapper = []
             for i in range(1,24):
@@ -28,8 +23,6 @@ def company(request):
 
             for time in hourMapper:
                 out.append(filteredData.get(time = time).population)
-
-            # pass in the hourly data to be used for the chart
             context["averages"] = out
 
 
